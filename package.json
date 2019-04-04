@@ -1,6 +1,6 @@
 {
   "name": "expressjs-decorators",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "express decorators",
   "main": "dist/index.js",
   "types": "src/index.ts",
