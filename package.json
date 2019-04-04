@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/weagle08/express-audi-decorators.git"
+    "url": "git+https://github.com/weagle08/expressjs-decorators.git"
   },
   "keywords": [
     "expressjs",
