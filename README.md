@@ -1,4 +1,4 @@
-# express-audi-decorators
+# expressjs-decorators
 express decorators
 
 ## overview
@@ -7,7 +7,7 @@ This is a convience library to make creating routes for express REST services cl
 
 ## getting started
 
->*$ npm install express-audi-decorators aurelia-dependency-injection*
+>*$ npm install expressjs-decorators
 
 ---
 
