@@ -1,10 +1,12 @@
 {
-  "name": "expressjs-decorators",
-  "version": "1.0.1",
+  "name": "@sameke/expressjs-decorators",
+  "version": "1.0.2",
   "description": "express decorators",
   "main": "dist/index.js",
   "types": "src/index.ts",
   "scripts": {
+    "tsc": "tsc -p tsconfig.prod.json",
+    "build": "npm run tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,7 +26,7 @@
   "homepage": "https://github.com/weagle08/expressjs-decorators#readme",
   "dependencies": {
     "del": "^4.1.0",
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "gulp": "^4.0.0",
     "gulp-changed": "^3.2.0",
     "gulp-notify": "^3.2.0",
@@ -35,7 +37,7 @@
     "typescript": "^3.4.1"
   },
   "devDependencies": {
-    "@types/express": "^4.16.0",
+    "@types/express": "^4.17.1",
     "@types/node": "^10.12.18",
     "vinyl-paths": "^2.1.0",
     "yargs": "^12.0.5"

@@ -1,4 +1,5 @@
 import { Application, NextFunction, Request, Response, Router } from 'express';
+import * as express from 'express';
 import { ServerResponse } from 'http';
 
 enum ParameterType {
@@ -358,7 +359,7 @@ export function registerController(app: Application | Router, controller: any) {
         (router as any)[route.method].apply(router, [route.url, routeHandler]);
     }
 
-    app.use(url, router);
+    app.use(url, router as Application); // router as sub application, for some reason the type defs updated for v 4.17+ and must cast to Application
 }
 
 function getParameters(req: Request, res: Response, next: NextFunction, params: IParameterDeclaration[]): any[] {
