@@ -1,12 +1,13 @@
 {
   "name": "@sameke/expressjs-decorators",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "express decorators",
   "main": "dist/index.js",
-  "types": "src/index.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "tsc": "tsc -p tsconfig.prod.json",
     "build": "npm run tsc",
+    "prepublish": "npm run tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
