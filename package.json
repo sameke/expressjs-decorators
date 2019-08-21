@@ -1,6 +1,6 @@
 {
   "name": "@sameke/expressjs-decorators",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "express decorators",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/weagle08/expressjs-decorators.git"
+    "url": "git+https://github.com/sameke/expressjs-decorators.git"
   },
   "keywords": [
     "expressjs",
@@ -22,9 +22,9 @@
   "author": "weagle08",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/weagle08/expressjs-decorators/issues"
+    "url": "https://github.com/sameke/expressjs-decorators/issues"
   },
-  "homepage": "https://github.com/weagle08/expressjs-decorators#readme",
+  "homepage": "https://github.com/sameke/expressjs-decorators#readme",
   "dependencies": {
     "del": "^4.1.0",
     "express": "^4.17.1",
