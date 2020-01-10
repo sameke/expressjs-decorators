@@ -25,7 +25,10 @@ interface IRouteDeclaration {
     url: string;
     method: string;
     params: IParameterDeclaration[];
+    mw: MiddleWare[];
 }
+
+export type MiddleWare = (req: Request, res: Response, next: NextFunction) => void;
 
 /**
  * function decorator
@@ -42,14 +45,15 @@ export function Controller(path: string) {
  * function decorator
  * @param path path for get method
  */
-export function Get(path: string) {
+export function Get(path: string = '', middleware?: MiddleWare[]) {
     return (target: any, key: string, descriptor: PropertyDescriptor) => {
         let meta = getMeta(target);
         if (meta.routes[key] == null) {
             meta.routes[key] = {} as IRouteDeclaration;
         }
-        meta.routes[key].url = path;
+        meta.routes[key].url = path || '';
         meta.routes[key].method = 'get';
+        meta.routes[key].mw = middleware;
         return;
     };
 }
@@ -58,7 +62,7 @@ export function Get(path: string) {
  * function decorator
  * @param path path for post method
  */
-export function Post(path: string) {
+export function Post(path: string = '', middleware?: MiddleWare[]) {
     return (target: any, key: string, descriptor: PropertyDescriptor) => {
         let meta = getMeta(target);
         if (meta.routes[key] == null) {
@@ -66,6 +70,7 @@ export function Post(path: string) {
         }
         meta.routes[key].url = path;
         meta.routes[key].method = 'post';
+        meta.routes[key].mw = middleware;
         return;
     };
 }
@@ -74,7 +79,7 @@ export function Post(path: string) {
  * function decorator
  * @param path path for put method
  */
-export function Put(path: string) {
+export function Put(path: string = '', middleware?: MiddleWare[]) {
     return (target: any, key: string, descriptor: PropertyDescriptor) => {
         let meta = getMeta(target);
         if (meta.routes[key] == null) {
@@ -82,6 +87,7 @@ export function Put(path: string) {
         }
         meta.routes[key].url = path;
         meta.routes[key].method = 'put';
+        meta.routes[key].mw = middleware;
         return;
     };
 }
@@ -90,7 +96,7 @@ export function Put(path: string) {
  * function decorator
  * @param path path for delete method
  */
-export function Delete(path: string) {
+export function Delete(path: string = '', middleware?: MiddleWare[]) {
     return (target: any, key: string, descriptor: PropertyDescriptor) => {
         let meta = getMeta(target);
         if (meta.routes[key] == null) {
@@ -98,6 +104,7 @@ export function Delete(path: string) {
         }
         meta.routes[key].url = path;
         meta.routes[key].method = 'delete';
+        meta.routes[key].mw = middleware;
 
         return;
     };
@@ -355,6 +362,12 @@ export function registerController(app: Application | Router, controller: any) {
 
             return handler;
         };
+
+        if (route.mw != null && route.mw.length > 0) {
+            (router as any)[route.method].apply(router, [route.url, ...route.mw, routeHandler]);
+        } else {
+            (router as any)[route.method].apply(router, [route.url, routeHandler]);
+        }
 
         (router as any)[route.method].apply(router, [route.url, routeHandler]);
     }
