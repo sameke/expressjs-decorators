@@ -368,8 +368,6 @@ export function registerController(app: Application | Router, controller: any) {
         } else {
             (router as any)[route.method].apply(router, [route.url, routeHandler]);
         }
-
-        (router as any)[route.method].apply(router, [route.url, routeHandler]);
     }
 
     app.use(url, router as Application); // router as sub application, for some reason the type defs updated for v 4.17+ and must cast to Application
