@@ -210,6 +210,30 @@ export function NumQuery(name: string, isFloat: boolean = false) {
 
 /**
  * parameter decorator
+ * @param name name of param to pass from request query
+ */
+export function Headers(name?: string) {
+    return (target: any, key: string, index: number) => {
+        let meta = getMeta(target);
+        if (meta.routes[key] == null) {
+            meta.routes[key] = {} as IRouteDeclaration;
+        }
+
+        let routeDeclaration = meta.routes[key];
+        if (routeDeclaration.params == null) {
+            routeDeclaration.params = [];
+        }
+
+        routeDeclaration.params.push({
+            index: index,
+            name: name,
+            type: ParameterType.HEADERS
+        });
+    };
+}
+
+/**
+ * parameter decorator
  * @param name name of param to pass from request body
  */
 export function Body(name?: string) {
