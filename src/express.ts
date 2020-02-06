@@ -421,7 +421,7 @@ function getParameters(req: Request, res: Response, next: NextFunction, params: 
             case ParameterType.NUM_PARAM:
                 try {
                     let value = pd.isFloat ? parseFloat(req.params[pd.name]) : parseInt(req.params[pd.name], 10);
-                    args[pd.index] = isNaN(value) === true ? null : value;;
+                    args[pd.index] = isNaN(value) === true ? null : value;
                 } catch {
                     args[pd.index] = null;
                 }
