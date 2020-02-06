@@ -421,7 +421,7 @@ function getParameters(req: Request, res: Response, next: NextFunction, params: 
             case ParameterType.NUM_PARAM:
                 try {
                     let value = pd.isFloat ? parseFloat(req.params[pd.name]) : parseInt(req.params[pd.name], 10);
-                    args[pd.index] = value;
+                    args[pd.index] = isNaN(value) === true ? null : value;;
                 } catch {
                     args[pd.index] = null;
                 }
@@ -432,7 +432,7 @@ function getParameters(req: Request, res: Response, next: NextFunction, params: 
             case ParameterType.NUM_QUERY:
                 try {
                     let value = pd.isFloat ? parseFloat(req.query[pd.name]) : parseInt(req.query[pd.name], 10);
-                    args[pd.index] = value;
+                    args[pd.index] = isNaN(value) === true ? null : value;
                 } catch {
                     args[pd.index] = null;
                 }
