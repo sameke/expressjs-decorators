@@ -1,14 +1,15 @@
 {
   "name": "@sameke/expressjs-decorators",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "express decorators",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "tsc": "tsc -p tsconfig.prod.json",
-    "build": "npm run tsc",
-    "prepare": "npm run tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prepare": "npm run build",
+    "prepublishOnly": "gulp -- bump",
+    "postpublish": "git add . && git commit -m \"published\" && git push"
   },
   "repository": {
     "type": "git",

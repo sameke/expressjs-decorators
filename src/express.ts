@@ -25,10 +25,10 @@ interface IRouteDeclaration {
     url: string;
     method: string;
     params: IParameterDeclaration[];
-    mw: MiddleWare[];
+    mw: Middleware[];
 }
 
-export type MiddleWare = (req: Request, res: Response, next: NextFunction) => void;
+export type Middleware = (req: Request, res: Response, next: NextFunction) => void;
 
 /**
  * function decorator
@@ -45,7 +45,7 @@ export function Controller(path: string) {
  * function decorator
  * @param path path for get method
  */
-export function Get(path: string = '', middleware?: MiddleWare[]) {
+export function Get(path: string = '', middleware?: Middleware[]) {
     return (target: any, key: string, descriptor: PropertyDescriptor) => {
         let meta = getMeta(target);
         if (meta.routes[key] == null) {
@@ -62,7 +62,7 @@ export function Get(path: string = '', middleware?: MiddleWare[]) {
  * function decorator
  * @param path path for post method
  */
-export function Post(path: string = '', middleware?: MiddleWare[]) {
+export function Post(path: string = '', middleware?: Middleware[]) {
     return (target: any, key: string, descriptor: PropertyDescriptor) => {
         let meta = getMeta(target);
         if (meta.routes[key] == null) {
@@ -79,7 +79,7 @@ export function Post(path: string = '', middleware?: MiddleWare[]) {
  * function decorator
  * @param path path for put method
  */
-export function Put(path: string = '', middleware?: MiddleWare[]) {
+export function Put(path: string = '', middleware?: Middleware[]) {
     return (target: any, key: string, descriptor: PropertyDescriptor) => {
         let meta = getMeta(target);
         if (meta.routes[key] == null) {
@@ -96,7 +96,7 @@ export function Put(path: string = '', middleware?: MiddleWare[]) {
  * function decorator
  * @param path path for delete method
  */
-export function Delete(path: string = '', middleware?: MiddleWare[]) {
+export function Delete(path: string = '', middleware?: Middleware[]) {
     return (target: any, key: string, descriptor: PropertyDescriptor) => {
         let meta = getMeta(target);
         if (meta.routes[key] == null) {
