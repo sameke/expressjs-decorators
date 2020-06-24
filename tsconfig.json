@@ -1,15 +1,22 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
+        "rootDir": "src",
+        "outDir": "dist",
+        "sourceMap": true,
         "target": "es2017",
         "module": "commonjs",
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
         "declaration": true,
         "noImplicitAny": true,
-        "outDir": "dist",
-        "baseUrl": ".",
-        "moduleResolution": "node",
-        "removeComments": true
-    }
+        "removeComments": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "node"
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
 }

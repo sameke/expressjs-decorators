@@ -10,6 +10,7 @@
         "semicolon": true,
         "eofline": false,
         "interface-name": true,
+        "space-before-function-paren": false,
         "variable-name": [
             true,
             "ban-keywords",

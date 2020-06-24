@@ -1,7 +1,8 @@
-var gulp = require('gulp');
+const gulp = require('gulp');
+const bump = require('gulp-bump');
 
-// all gulp tasks are located in the ./build/tasks directory
-// gulp configuration is in files in ./build directory
-require('require-dir')('build/tasks');
-
-gulp.task('default', gulp.series('build'));
+gulp.task('bump', () => {
+    return gulp.src('./package.json')
+        .pipe(bump({ type: 'patch' }))
+        .pipe(gulp.dest('./'));
+});
