@@ -53,7 +53,7 @@ export function Get(path: string = '', middleware?: Middleware[]) {
         }
         meta.routes[key].url = path || '';
         meta.routes[key].method = 'get';
-        meta.routes[key].mw = middleware;
+        meta.routes[key].mw = middleware as Middleware[];
         return;
     };
 }
@@ -70,7 +70,7 @@ export function Post(path: string = '', middleware?: Middleware[]) {
         }
         meta.routes[key].url = path;
         meta.routes[key].method = 'post';
-        meta.routes[key].mw = middleware;
+        meta.routes[key].mw = middleware as Middleware[];
         return;
     };
 }
@@ -87,7 +87,7 @@ export function Put(path: string = '', middleware?: Middleware[]) {
         }
         meta.routes[key].url = path;
         meta.routes[key].method = 'put';
-        meta.routes[key].mw = middleware;
+        meta.routes[key].mw = middleware as Middleware[];
         return;
     };
 }
@@ -104,7 +104,7 @@ export function Delete(path: string = '', middleware?: Middleware[]) {
         }
         meta.routes[key].url = path;
         meta.routes[key].method = 'delete';
-        meta.routes[key].mw = middleware;
+        meta.routes[key].mw = middleware as Middleware[];
 
         return;
     };
@@ -357,7 +357,7 @@ export function CatchAndSendError() {
                 }
             } catch (ex) {
                 if (res != null) {
-                    res.status(400).json({ error: ex.message || 'an error has occurred processing request' });
+                    res.status(400).json({ error: (ex as any).message || 'an error has occurred processing request' });
                 } else {
                     // throw and let default handler handle this
                     throw ex;
@@ -431,7 +431,7 @@ function getParameters(req: Request, res: Response, next: NextFunction, params: 
                 break;
             case ParameterType.NUM_QUERY:
                 try {
-                    let value = pd.isFloat ? parseFloat(req.query[pd.name]) : parseInt(req.query[pd.name], 10);
+                    let value = pd.isFloat ? parseFloat(req.query[pd.name] as string) : parseInt(req.query[pd.name] as string, 10);
                     args[pd.index] = isNaN(value) === true ? null : value;
                 } catch {
                     args[pd.index] = null;
