@@ -1,40 +1,39 @@
 {
-  "name": "@sameke/expressjs-decorators",
-  "version": "1.1.14",
-  "description": "express decorators",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist/**/*"
-  ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc -p tsconfig.json",
-    "prepare": "npm run build && npm run git && npm version patch",
-    "git": "git add . && git diff-index --quiet HEAD || git commit -m \"publishing\"",
-    "postpublish": "git push"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sameke/expressjs-decorators.git"
-  },
-  "keywords": [
-    "expressjs",
-    "decorators",
-    "express-decorators"
-  ],
-  "author": "weagle08",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sameke/expressjs-decorators/issues"
-  },
-  "homepage": "https://github.com/sameke/expressjs-decorators#readme",
-  "peerDependencies": {
-    "express": "*"
-  },
-  "devDependencies": {
-    "@types/express": "5.0.1",
-    "@types/node": "22.14.0",
-    "typescript": "5.8.3"
-  }
+    "name": "@sameke/expressjs-decorators",
+    "version": "1.1.14",
+    "description": "express decorators",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist/**/*"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc -p tsconfig.json",
+        "prepare": "npm run build && npm run git && npm version patch",
+        "git": "git add . && git diff-index --quiet HEAD || git commit -m \"publishing\"",
+        "postpublish": "git push"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sameke/expressjs-decorators.git"
+    },
+    "keywords": [
+        "expressjs",
+        "decorators",
+        "express-decorators"
+    ],
+    "author": "weagle08",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/sameke/expressjs-decorators/issues"
+    },
+    "homepage": "https://github.com/sameke/expressjs-decorators#readme",
+    "peerDependencies": {
+        "express": ">= 5.* < 6.*"
+    },
+    "devDependencies": {
+        "@types/express": "5.0.6",
+        "typescript": "5.9.3"
+    }
 }
