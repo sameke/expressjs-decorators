@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/sameke/expressjs-decorators#readme",
   "peerDependencies": {
-    "express": "^5.*"
+    "express": "*"
   },
   "devDependencies": {
     "@types/express": "5.0.1",
